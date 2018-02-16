@@ -18,12 +18,12 @@ namespace ADL.Handlers
         private static string tenantId = "c2d1d060-ad81-4403-b7a3-1ac5cd90d52d"; //Azure active directory tenant
         private static string adlsAccountFQDN = "mikaelstestdatalake.azuredatalakestore.net"; //Datalake Storage URL
 
-        internal static void ADLsetup()
+        internal static bool AdlFunction()
         {
             var creds = new ClientCredential(applicationId, clientSecret);
             var clientCreds = ApplicationTokenProvider.LoginSilentAsync(tenantId, creds).GetAwaiter().GetResult();
 
-            throw new NotImplementedException();
+            return false;
         }
     }
 }

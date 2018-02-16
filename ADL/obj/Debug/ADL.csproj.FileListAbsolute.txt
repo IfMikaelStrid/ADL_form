@@ -82,3 +82,15 @@ C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\obj\Debug\ADL.csprojResolveAs
 C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\obj\Debug\ADL.csproj.CoreCompileInputs.cache
 C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\obj\Debug\ADL.dll
 C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\obj\Debug\ADL.pdb
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.Azure.DataLake.Store.dll
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.Rest.ClientRuntime.dll
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\NLog.dll
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.Azure.DataLake.Store.xml
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.xml
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.xml
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.Rest.ClientRuntime.xml
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.Rest.ClientRuntime.Azure.Authentication.xml
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\NLog.xml
