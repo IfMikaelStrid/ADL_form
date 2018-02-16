@@ -17,6 +17,7 @@ namespace ADL.Controllers
 
         public ActionResult Submit(FormValues formValues)
         {
+            Handlers.ADLHandler.ADLsetup();
             return View(formValues);
         }
     }
