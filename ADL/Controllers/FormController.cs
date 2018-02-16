@@ -17,7 +17,7 @@ namespace ADL.Controllers
 
         public ActionResult Submit(FormValues formValues)
         {
-            throw new NotImplementedException();
+            return View(formValues);
         }
     }
 }

@@ -16,32 +16,57 @@
 <div class="form-container">
     @using (Html.BeginForm("Submit", "Form", FormMethod.Post))
     {
-        @Html.TextBoxFor(model => model.FirstName, new
-        {
-            id = "firstname",
-            @class = "form-control",
-            type = "text",
-            autocomplete = "off",
-            placeholder = "Förnamn"
-        })
-        <br />
-        @Html.TextBoxFor(model => model.SurName, new
-        {
-            id = "surname",
-            @class = "form-control",
-            type = "text",
-            autocomplete = "off",
-            placeholder = "Efternamn"
-        })
-        <br />
-        @Html.TextBoxFor(model => model.Email, new
-        {
-            id = "email",
-            @class = "form-control",
-            type = "email",
-            autocomplete = "off",
-            placeholder = "Email"
-        })
+        <div>
+            @Html.TextBoxFor(model => model.FirstName, new
+            {
+                id = "firstname",
+                @class = "form-control",
+                type = "text",
+                autocomplete = "off",
+                placeholder = "Förnamn"
+            })
+
+        </div>
+        <div>
+            @Html.TextBoxFor(model => model.Town, new
+            {
+                id = "Town",
+                @class = "form-control",
+                type = "text",
+                autocomplete = "off",
+                placeholder = "hemstad"
+            })
+        </div>
+        <div>
+            @Html.TextBoxFor(model => model.Country, new
+            {
+                id = "Country",
+                @class = "form-control",
+                type = "text",
+                autocomplete = "off",
+                placeholder = "Hemland"
+            })
+        </div>
+        <div>
+            @Html.TextBoxFor(model => model.Age, new
+            {
+                id = "Age",
+                @class = "form-control",
+                type = "number",
+                autocomplete = "off",
+                placeholder = "Ålder"
+            })
+        </div>
+        <div>
+            @Html.TextBoxFor(model => model.FavoriteColor, new
+            {
+                id = "FavoriteColor",
+                @class = "form-control",
+                type = "text",
+                autocomplete = "off",
+                placeholder = "Din favoritfärg"
+            })
+        </div>
         <div class="row">
             <div class="col-xs-12 text-center">
                 <br />
