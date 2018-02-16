@@ -1,0 +1,11 @@
+﻿.form-container {
+    padding: 20px;
+    background-color: darkgray;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+}
+
+input[type=text] {
+    width: 400px;
+}

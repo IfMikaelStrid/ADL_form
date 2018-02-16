@@ -1,0 +1,55 @@
+﻿
+@model ADL.Models.FormValues
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    var csharpVarieable = "Help me, I'm trapped in your screen D: ";
+}
+
+<div class="jumbotron form-container">
+    <h2>@csharpVarieable</h2>
+</div>
+
+<div class="form-container">
+    @using (Html.BeginForm("Submit", "Form", FormMethod.Post))
+    {
+        @Html.TextBoxFor(model => model.FirstName, new
+        {
+            id = "firstname",
+            @class = "form-control",
+            type = "text",
+            autocomplete = "off",
+            placeholder = "Förnamn"
+        })
+        <br />
+        @Html.TextBoxFor(model => model.SurName, new
+        {
+            id = "surname",
+            @class = "form-control",
+            type = "text",
+            autocomplete = "off",
+            placeholder = "Efternamn"
+        })
+        <br />
+        @Html.TextBoxFor(model => model.Email, new
+        {
+            id = "email",
+            @class = "form-control",
+            type = "email",
+            autocomplete = "off",
+            placeholder = "Email"
+        })
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <br />
+                <button type="submit" class="btn btn-primary btn-block " id="button" name="LoginButton" value="sendform" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Var god vänta">
+                    Submit!!!!
+                </button>
+            </div>
+        </div>
+
+    }
+</div>
