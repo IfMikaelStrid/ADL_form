@@ -15,14 +15,14 @@ namespace ADL.Controllers
             return View();
         }
 
-        public ActionResult SubmitAsync(FormValues formValues)
+        public ActionResult Submit(FormValues formValues)
         {
-            bool isSuccessfull = Handlers.ADLHandler.AdlFunction();
-            if (isSuccessfull)
-            {
-                return View(formValues); 
-            }
-            return View("Error");
+            //bool isSuccessfull = Handlers.ADLHandler.AdlFunction();
+            //if (isSuccessfull)
+            //{
+            //    return Redirect("Shared/Error");
+            //}
+            return View(formValues);
         }
     }
 }
