@@ -17,7 +17,7 @@ namespace ADL.Controllers
 
         public ActionResult Submit(FormValues formValues)
         {
-            //bool isSuccessfull = Handlers.ADLHandler.AdlFunction();
+            bool isSuccessfull = Handlers.ADLHandler.AdlFunction(formValues);
             //if (isSuccessfull)
             //{
             //    return Redirect("Error");
