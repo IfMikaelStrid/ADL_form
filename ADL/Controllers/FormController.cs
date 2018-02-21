@@ -20,7 +20,7 @@ namespace ADL.Controllers
             //bool isSuccessfull = Handlers.ADLHandler.AdlFunction();
             //if (isSuccessfull)
             //{
-            //    return Redirect("Shared/Error");
+            //    return Redirect("Error");
             //}
             return View(formValues);
         }

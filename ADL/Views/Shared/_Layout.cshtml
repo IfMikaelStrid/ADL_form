@@ -6,15 +6,16 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/CustomCss/css")
+    @Styles.Render("~/Content/bootstrap-colorpicker/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="container body-content">
         @RenderBody()
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/colorPicker")
     @RenderSection("scripts", required: false)
 </body>
 </html>
