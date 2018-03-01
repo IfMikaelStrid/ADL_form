@@ -18,82 +18,99 @@ namespace ADL.Handlers
         private static string clientSecret = "s4UF+48RiF6/knup/kscBiE/JcX+vCTr46MbOUaD7sg="; //Azure active directory AuthToken
         private static string tenantId = "c2d1d060-ad81-4403-b7a3-1ac5cd90d52d"; //Azure active directory tenant
         private static string adlsAccountFQDN = "mikaelstestdatalake.azuredatalakestore.net"; //Datalake Storage URL
+        private static string fileName = "/adltest1.txt";
 
-        internal static bool AdlFunction(FormValues formValues)
+
+
+        public async Task<AdlsClient> GetAdlCredentials()
         {
-            // Obtain AAD token
-            var creds = new ClientCredential(applicationId, clientSecret);
-            var clientCreds = ApplicationTokenProvider.LoginSilentAsync(tenantId, creds).GetAwaiter().GetResult();
-
-            // Create ADLS client object
-            AdlsClient client = AdlsClient.CreateClient(adlsAccountFQDN, clientCreds);
-
             try
             {
-                string fileName = "/adltest1.txt";
+                // Obtain AAD token
+                var creds = new ClientCredential(applicationId, clientSecret);
 
-                //Create a file - automatically creates any parent directories that don't exist
-                //using (var streamWriter = new StreamWriter(client.CreateFile(fileName, IfExists.Overwrite)))
-                //{
-                //    var row = $"Name: {formValues.FirstName}, " +
-                //              $"Age: {formValues.Age}, " +
-                //              $"Country: {formValues.Country}, " +
-                //              $"Town: {formValues.Town}, " +
-                //              $"Favorite color: {formValues.FavoriteColor}";
-                //    streamWriter.WriteLine(row);
-                //}
-
-                //Append to existing file
-                using (var streamWriter = new StreamWriter(client.GetAppendStream(fileName)))
-                {
-                    var row = $"Name: {formValues.FirstName}, " +
-                              $"Age: {formValues.Age}, " +
-                              $"Country: {formValues.Country}, " +
-                              $"Town: {formValues.Town}, " +
-                              $"Favorite color: {formValues.FavoriteColor}";
-                    streamWriter.WriteLine(row);
-                }
-
-                //Read file contents
-                //using (var readStream = new StreamReader(client.GetReadStream(fileName)))
-                //{
-                //    string line;
-                //    while ((line = readStream.ReadLine()) != null)
-                //    {
-                //        Console.WriteLine(line);
-                //    }
-                //}
-
-                //// Get the properties of the file
-                //var directoryEntry = client.GetDirectoryEntry(fileName);
-                //PrintDirectoryEntry(directoryEntry);
-
-                //// Rename a file
-                //string destFilePath = "/Test/testRenameDest3.txt";
-                //client.Rename(fileName, destFilePath, true);
-
-                // Enumerate directory
-                //foreach (var entry in client.EnumerateDirectory("/Test"))
-                //{
-                //    PrintDirectoryEntry(entry);
-                //}
-
-                // Delete a directory and all it's subdirectories and files
-                //client.DeleteRecursive("/Test");
-
+                // Create ADLS client object
+                var clientCreds = await ApplicationTokenProvider.LoginSilentAsync(tenantId, creds);
+                AdlsClient client = AdlsClient.CreateClient(adlsAccountFQDN, clientCreds);
+                return client;
             }
             catch (AdlsException e)
             {
                 PrintAdlsException(e);
-                return false;
+                return null;
             }
-
-            //Console.WriteLine("Done. Press ENTER to continue ...");
-            //Console.ReadLine();
-
-
-            return true;
         }
+
+        public void CreateFile(AdlsClient client, FormValues formValues)
+        {
+            //Create a file - automatically creates any parent directories that don't exist
+            using (var streamWriter = new StreamWriter(client.CreateFile(fileName, IfExists.Overwrite)))
+            {
+                var row = $"Name: {formValues.FirstName}, " +
+                          $"Age: {formValues.Age}, " +
+                          $"Country: {formValues.Country}, " +
+                          $"Town: {formValues.Town}, " +
+                          $"Favorite color: {formValues.FavoriteColor}";
+                streamWriter.WriteLine(row);
+            }
+        }
+
+        public void AppendToFile(AdlsClient client, FormValues formValues)
+        {
+            //Append to existing file
+            using (var streamWriter = new StreamWriter(client.GetAppendStream(fileName)))
+            {
+                var row = $"Name: {formValues.FirstName}, " +
+                          $"Age: {formValues.Age}, " +
+                          $"Country: {formValues.Country}, " +
+                          $"Town: {formValues.Town}, " +
+                          $"Favorite color: {formValues.FavoriteColor}";
+                streamWriter.WriteLine(row);
+            }
+        }
+
+        public void ReadFromFile(AdlsClient client)
+        {
+            // Read file contents
+            using (var readStream = new StreamReader(client.GetReadStream(fileName)))
+            {
+                string line;
+                while ((line = readStream.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+        }
+
+        public void GetFileProperties(AdlsClient client)
+        {
+            // Get the properties of the file
+            var directoryEntry = client.GetDirectoryEntry(fileName);
+            PrintDirectoryEntry(directoryEntry);
+        }
+
+        public void RenameFile(AdlsClient client)
+        {
+            // Rename a file
+            string destFilePath = "/Test/testRenameDest3.txt";
+            client.Rename(fileName, destFilePath, true);
+        }
+
+        public void EnumerateDirectory(AdlsClient client)
+        {
+            // Enumerate directory
+            foreach (var entry in client.EnumerateDirectory("/Test"))
+            {
+                PrintDirectoryEntry(entry);
+            }
+        }
+
+        public void DeleteDirectory(AdlsClient client)
+        {
+            // Delete a directory and all it's subdirectories and files
+            client.DeleteRecursive("/Test");
+        }
+
         private static void PrintDirectoryEntry(DirectoryEntry entry)
         {
             Console.WriteLine($"Name: {entry.Name}");
@@ -119,5 +136,6 @@ namespace ADL.Handlers
             Console.WriteLine($"   Exception Stack Trace: {exp.StackTrace}");
             Console.WriteLine();
         }
+
     }
 }

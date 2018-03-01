@@ -1,7 +1,9 @@
-﻿using ADL.Models;
+﻿using ADL.Handlers;
+using ADL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,13 +17,12 @@ namespace ADL.Controllers
             return View();
         }
 
-        public ActionResult Submit(FormValues formValues)
+        public async Task<ActionResult> Submit(FormValues formValues)
         {
-            bool isSuccessfull = Handlers.ADLHandler.AdlFunction(formValues);
-            //if (isSuccessfull)
-            //{
-            //    return Redirect("Error");
-            //}
+            ADLHandler adlHandler = new ADLHandler();
+            var client = await adlHandler.GetAdlCredentials();
+            adlHandler.AppendToFile(client, formValues);
+
             return View(formValues);
         }
     }
