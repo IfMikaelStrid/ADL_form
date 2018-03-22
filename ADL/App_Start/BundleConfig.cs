@@ -38,6 +38,8 @@ namespace ADL
                       "~/Content/bootstrap-colorpicker/css/bootstrap-colorpicker.css",
                       "~/Content/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css"
                       ));
+            bundles.Add(new StyleBundle("~/CSS/img").Include(
+                "~/Content/bootstrap-colorpicker/img/*"));
         }
     }
 }
