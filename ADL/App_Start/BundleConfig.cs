@@ -34,7 +34,7 @@ namespace ADL
             bundles.Add(new StyleBundle("~/CSS/CustomCss/css").Include(
                       "~/Content/CustomCss/Form.css"));
 
-            bundles.Add(new StyleBundle("~/CSS/bootstrap-colorpicker/css").Include(
+            bundles.Add(new StyleBundle("~/CSS/bootstrap-colorpicker/").Include(
                       "~/Content/bootstrap-colorpicker/css/bootstrap-colorpicker.css",
                       "~/Content/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css"
                       ));
