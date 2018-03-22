@@ -1,11 +1,22 @@
 ﻿.form-container {
-    padding: 20px;
-    background-color: darkgray;
-    width: 700px;
+    background-color: rgba(0,0,10,0.3);
+    width: 100%;
+    
+    max-width: 900px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     display: flex;
     justify-content: center;
 }
 
-input[type] {
-    width: 400px;
-}
+
+@media only screen and (min-width: 401px) {
+        input[type] {
+            width: 400px;
+        }
+    }
+    @media only screen and (max-width: 400px) {
+        input[type] {
+            width: 100%;
+        }
+    }
