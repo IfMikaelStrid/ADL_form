@@ -79,7 +79,6 @@ C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.AI.ServerTeleme
 C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.AI.Web.xml
 C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\obj\Debug\ADL.csprojResolveAssemblyReference.cache
-C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\obj\Debug\ADL.csproj.CoreCompileInputs.cache
 C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\obj\Debug\ADL.dll
 C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\obj\Debug\ADL.pdb
 C:\Users\MikaelStrid\Documents\GitHub\ADL_form\ADL\bin\Microsoft.Azure.DataLake.Store.dll

@@ -23,17 +23,18 @@ namespace ADL
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            bundles.Add(new ScriptBundle("~/CSS/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/CSS/theme").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
-            bundles.Add(new StyleBundle("~/Content/CustomCss/css").Include(
+
+            bundles.Add(new StyleBundle("~/CSS/CustomCss/css").Include(
                       "~/Content/CustomCss/Form.css"));
 
-            bundles.Add(new StyleBundle("~/Content/bootstrap-colorpicker/css").Include(
+            bundles.Add(new StyleBundle("~/CSS/bootstrap-colorpicker/css").Include(
                       "~/Content/bootstrap-colorpicker/css/bootstrap-colorpicker.css",
                       "~/Content/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css"
                       ));
