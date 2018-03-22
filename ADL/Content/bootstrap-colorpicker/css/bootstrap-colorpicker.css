@@ -13,7 +13,7 @@
   width: 100px;
   height: 100px;
   cursor: crosshair;
-  background-image: url("../img/saturation.png");
+  background-image: url("../../img/saturation.png");
 }
 
 .colorpicker-saturation i {
