@@ -35,7 +35,7 @@ namespace ADL
                       "~/Content/CustomCss/Form.css"));
 
             bundles.Add(new StyleBundle("~/CSS/bootstrap-colorpicker/").Include(
-                      "~/Content/bootstrap-colorpicker/css/*.css", new CssRewriteUrlTransform()
+                      "~/Content/bootstrap-colorpicker/css/*.css"
                       ));
         }
     }
