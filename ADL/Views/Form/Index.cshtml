@@ -4,7 +4,74 @@
 @{
     ViewBag.Title = "Kompetenslunch";
 }
+<style>
+    body{margin-top:20px;}
+    ._select_color{
+        font-size: 20px;
+        padding: 10px 12px;
+        font-weight: 300;
+        line-height: 28px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        -webkit-appearance: none;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        text-align: left;
+        background-image: none;
+        color: #796652;
+        background: white;
+    }
+    ._select_color_drop {
+        margin: 0;
+        padding: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        top: 99%;
+        border-top: 0;
+        width: 100%;
+    }
+    ._select_color_drop > li {
+        display: inline-block;
+        padding: 7px;
+        border-right: 1px solid rgba(192, 192, 192, 0.55);
+        cursor: pointer;
+        float: left;
+    }
+    ._select_color_drop > li > .color,.btn > span.color{
+        width: 25px;
+        height: 25px;
+        border-radius: 4px;
+        float: left;
+    }
+    .btn > span.color{margin-right:10px}
+    .btn .caret{
+        float: right;
+        border-top: 7px solid;
+        font-size: 28px;
+        padding-top: 5px;
+        vertical-align: middle;
+        position: absolute;
+        right: 20px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        top: 20px;    
+    }
+    ._select_color_drop > li > .red ,.btn._select_color > span.red{background-color: red;}
+    ._select_color_drop > li > .green ,.btn._select_color > span.green{background-color: green;}
+    ._select_color_drop > li > .yellow ,.btn._select_color > span.yellow{background-color: yellow;}
+    ._select_color_drop > li > .brown ,.btn._select_color > span.brown{background-color: brown;}
+    ._select_color_drop > li > .orange ,.btn._select_color > span.orange{background-color: orange;}
+    ._select_color_drop > li > .pink ,.btn._select_color > span.pink{background-color: pink;}
+    ._select_color_drop > li > .silver ,.btn._select_color > span.silver{background-color: silver;}
+    ._select_color_drop > li > .blue ,.btn._select_color > span.blue{background-color: blue;}
+    ._select_color_drop > li > .TEAL ,.btn._select_color > span.TEAL{background-color: #008080;}
+    ._select_color_drop > li > .NAVY ,.btn._select_color > span.NAVY{background-color: #000080;}
+    ._select_color_drop > li > .PURPLE ,.btn._select_color > span.PURPLE{background-color: #800080;}
+    ._select_color_drop > li > .OLIVE ,.btn._select_color > span.OLIVE{background-color: #808000;}
+    ._select_color_drop > li > .LIME ,.btn._select_color > span.LIME{background-color: #00FF00;}
 
+</style>
 <div class="col-lg-12">
 
     <div class="form-container">
@@ -51,7 +118,7 @@
                     placeholder = "Ålder"
                 })
             </div>
-            <div>
+            @*<div>
                 @Html.TextBoxFor(model => model.FavoriteColor, new
                 {
                     id = "FavoriteColor",
@@ -60,8 +127,29 @@
                     autocomplete = "off",
                     placeholder = "Din favoritfärg"
                 })
-            </div>
+            </div>*@
 
+            <div class="form-group">
+                <div class="dropdown">
+                    <button class="btn _select_color dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Grön<span class="caret _right"></span>
+                        <span _text_display="Grön" class="color green"></span></button>
+                    <ul class="dropdown-menu _select_color_drop" aria-labelledby="dropdownMenu1">
+                        <li><span _text_display="Grön" class="color green"></span></li>
+                        <li><span _text_display="Röd" class="color red"></span></li>
+                        <li><span _text_display="Gul" class="color yellow"></span></li>
+                        <li><span _text_display="Brun" class="color brown"></span></li>
+                        <li><span _text_display="Orange" class="color orange"></span></li>
+                        <li><span _text_display="Rosa" class="color pink"></span></li>
+                        <li><span _text_display="Silver" class="color silver"></span></li>
+                        <li><span _text_display="Blå" class="color blue"></span></li>
+                        <li><span _text_display="Turkosblå-ish" class="color TEAL"></span></li>
+                        <li><span _text_display="Marinblå" class="color NAVY"></span></li>
+                        <li><span _text_display="Lila" class="color PURPLE"></span></li>
+                        <li><span _text_display="Olivgrön" class="color OLIVE"></span></li>
+                        <li><span _text_display="Limegrön" class="color LIME"></span></li>
+                        <input type="hidden" name="_color" value="Grön"></ul>
+                </div>
+            </div>
 
             <div class="row">
                 <br />
@@ -82,4 +170,28 @@
             format: "rgb"
         });
     });
+
+
+
+    _colors = $('._select_color_drop li');
+    for (var i = _colors.length - 1; i >= 0; i--) {
+        $(_colors[i]).click(function () {
+            var color_text = $(this).find('span').attr('_text_display');
+            var elemnt = $(this).closest('._select_color_drop').prev();
+            elemnt.find('span.color').remove();
+            $(this).find('span').clone().appendTo(elemnt);
+            var contents = $(elemnt).contents();
+            if (contents.length > 0) {
+                if (contents.get(0).nodeType == Node.TEXT_NODE) {
+                    $(elemnt).html(color_text).append(contents.slice(1));
+                }
+            }
+            if ($('[name=_color]').val() == undefined) {
+                elemnt.next().append("<input type='hidden' name='_color' value='" + color_text + "'>");
+            } else {
+                $('[name=_color]').val(color_text);
+            }
+
+        })
+    };
 </script>
