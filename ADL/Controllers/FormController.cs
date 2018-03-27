@@ -21,7 +21,6 @@ namespace ADL.Controllers
         {
             ADLHandler adlHandler = new ADLHandler();
             var client = await adlHandler.GetAdlCredentials();
-            //adlHandler.CreateFile(client);
             adlHandler.AppendToFile(client, formValues);
 
             return View(formValues);

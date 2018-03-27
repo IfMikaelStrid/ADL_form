@@ -133,7 +133,8 @@
                @class = "form-control",
                type = "text",
                autocomplete = "off",
-               placeholder = "Förnamn"
+               placeholder = "Förnamn",
+               required="required"
            })
 
             </div>
@@ -144,7 +145,8 @@
                @class = "form-control",
                type = "text",
                autocomplete = "off",
-               placeholder = "Hemstad"
+               placeholder = "Hemstad",
+               required = "required"
            })
             </div>
             <div>
@@ -154,7 +156,8 @@
                @class = "form-control",
                type = "text",
                autocomplete = "off",
-               placeholder = "Hemland"
+               placeholder = "Hemland",
+               required = "required"
            })
             </div>
             <div>
@@ -164,7 +167,8 @@
                @class = "form-control",
                type = "number",
                autocomplete = "off",
-               placeholder = "Ålder"
+               placeholder = "Ålder",
+               required = "required"
            })
             </div>
             @Html.HiddenFor(model => model.FavoriteColor, new { Value = "Grön", id = "colorValue" })
