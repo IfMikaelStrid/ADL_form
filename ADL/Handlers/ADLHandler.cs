@@ -18,7 +18,7 @@ namespace ADL.Handlers
         private static string clientSecret = "s4UF+48RiF6/knup/kscBiE/JcX+vCTr46MbOUaD7sg="; //Azure active directory AuthToken
         private static string tenantId = "c2d1d060-ad81-4403-b7a3-1ac5cd90d52d"; //Azure active directory tenant
         private static string adlsAccountFQDN = "mikaelstestdatalake.azuredatalakestore.net"; //Datalake Storage URL
-        private static string fileName = "/adltest1.txt";
+        private static string fileName = "/DataLakeLunch.csv";
 
 
 
@@ -41,16 +41,16 @@ namespace ADL.Handlers
             }
         }
 
-        public void CreateFile(AdlsClient client, FormValues formValues)
+        public void CreateFile(AdlsClient client)
         {
             //Create a file - automatically creates any parent directories that don't exist
             using (var streamWriter = new StreamWriter(client.CreateFile(fileName, IfExists.Overwrite)))
             {
-                var row = $"Name: {formValues.FirstName}, " +
-                          $"Age: {formValues.Age}, " +
-                          $"Country: {formValues.Country}, " +
-                          $"Town: {formValues.Town}, " +
-                          $"Favorite color: {formValues.FavoriteColor}";
+                var row = $"Name:, " +
+                          $"Age:, " +
+                          $"Country:, " +
+                          $"Town:, " +
+                          $"Favorite color:";
                 streamWriter.WriteLine(row);
             }
         }
@@ -60,11 +60,11 @@ namespace ADL.Handlers
             //Append to existing file
             using (var streamWriter = new StreamWriter(client.GetAppendStream(fileName)))
             {
-                var row = $"Name: {formValues.FirstName}, " +
-                          $"Age: {formValues.Age}, " +
-                          $"Country: {formValues.Country}, " +
-                          $"Town: {formValues.Town}, " +
-                          $"Favorite color: {formValues.FavoriteColor}";
+                var row = $"{formValues.FirstName}, " +
+                          $"{formValues.Age}, " +
+                          $"{formValues.Country}, " +
+                          $"{formValues.Town}, " +
+                          $"{formValues.FavoriteColor}";
                 streamWriter.WriteLine(row);
             }
         }
