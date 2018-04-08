@@ -172,31 +172,22 @@
            })
             </div>
             @Html.HiddenFor(model => model.FavoriteColor, new { Value = "Grön", id = "colorValue" })
-            <div class="form-group">
-                <div class="dropdown">
-                    <button class="btn _select_color dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Grön<span class="caret _right"></span>
-                        <span _text_display="Grön" class="color green"></span>
-                    </button>
-                    <ul class="dropdown-menu _select_color_drop" id="dropdownMenu2" aria-labelledby="dropdownMenu1">
-                        <li value="Grön"><span _text_display="Grön" class="color green"></span></li>
-                        <li value="Röd"><span _text_display="Röd" class="color red"></span></li>
-                        <li value="Gul"><span _text_display="Gul" class="color yellow"></span></li>
-                        <li value="Brun"><span _text_display="Brun" class="color brown"></span></li>
-                        <li value="Orange"><span _text_display="Orange" class="color orange"></span></li>
-                        <li value="Rosa"><span _text_display="Rosa" class="color pink"></span></li>
-                        <li value="Silver"><span _text_display="Silver" class="color silver"></span></li>
-                        <li value="Blå"><span _text_display="Blå" class="color blue"></span></li>
-                        <li value="Turkosblå-ish"><span _text_display="Turkosblå-ish" class="color TEAL"></span></li>
-                        <li value="Marinblå"><span _text_display="Marinblå" class="color NAVY"></span></li>
-                        <li value="Lila"><span _text_display="Lila" class="color PURPLE"></span></li>
-                        <li value="Olivgrön"><span _text_display="Olivgrön" class="color OLIVE"></span></li>
-                        <li value="Limegrön"><span _text_display="Limegrön" class="color LIME"></span></li>
-                        <input type="hidden" name="_color" value="Grön">
-                    </ul>
-                </div>
+            <div>
+                <select class="btn _select_color dropdown-toggle" id="ColorDropdown">
+                    <option value="#000000" style="background-color: #ffffff">Vit</option>
+                    <option value="#0000ff" style="background-color: #0000ff">Blå</option>
+                    <option value="#00ff00" style="background-color: #00ff00">Grön</option>
+                    <option value="#ff0000" style="background-color: #ff0000">Röd</option>
+                    <option value="#ff0000" style="background-color: #ffff00">Gul</option>
+                    <option value="#A52A2A" style="background-color: #A52A2A">Brun</option>
+                    <option value="#ffa500" style="background-color: #ffa500">Orange</option>
+                    <option value="#ffc0cb" style="background-color: #ffc0cb">Rosa</option>
+                    <option value="#C0c0c0" style="background-color: #C0c0c0">Silver</option>
+                    <option value="#000080" style="background-color: #000080">Marinblå</option>
+                    <option value="#800080" style="background-color: #800080">Lila</option>
+                    <option value="#808000" style="background-color: #808000">Olivgrön</option>
+                </select>
             </div>
-
             <div class="row">
                 <br />
                 <button type="submit" class="btn btn-primary btn-block " id="button" name="LoginButton" value="sendform" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Var god vänta">
@@ -208,40 +199,15 @@
     </div>
 </div>
 
-@*<div class="col-lg-3"></div>*@
-
-
-
 <script src="//code.jquery.com/jquery-3.2.1.js"></script>
 <script type="text/javascript">
-    var color = "Grön";
-
     $(document).ready(function () {
-        $("ul[id*=dropdownMenu2] li").click(function () {
-            color = $(this).attr('value');
+
+        var color = $("#ColorDropdown option:selected").val();
+        alert(color);
+        $('select[id="ColorDropdown"]').change(function() {
+            color = $("#ColorDropdown option:selected").val();
             $("#colorValue").val(color);
         });
     });
-
-    _colors = $('._select_color_drop li');
-    for (var i = _colors.length - 1; i >= 0; i--) {
-        $(_colors[i]).click(function () {
-            var color_text = $(this).find('span').attr('_text_display');
-            var elemnt = $(this).closest('._select_color_drop').prev();
-            elemnt.find('span.color').remove();
-            $(this).find('span').clone().appendTo(elemnt);
-            var contents = $(elemnt).contents();
-            if (contents.length > 0) {
-                if (contents.get(0).nodeType == Node.TEXT_NODE) {
-                    $(elemnt).html(color_text).append(contents.slice(1));
-                }
-            }
-            if ($('[name=_color]').val() == undefined) {
-                elemnt.next().append("<input type='hidden' name='_color' value='" + color_text + "'>");
-            } else {
-                $('[name=_color]').val(color_text);
-            }
-
-        })
-    };
 </script>
