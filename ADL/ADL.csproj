@@ -167,6 +167,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handlers\ADLHandler.cs" />
+    <Compile Include="Models\CookieValues.cs" />
     <Compile Include="Models\FormValues.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

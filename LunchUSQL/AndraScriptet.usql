@@ -1,0 +1,35 @@
+﻿//CREATE DATABASE IF NOT EXISTS KompetensLunch;
+//USE DATABASE KompetensLunch;
+//
+//DROP TABLE IF EXISTS dbo.CuteStuff;
+//CREATE TABLE dbo.CuteStuff
+//(
+//    Id int,
+//    Name string,
+//    Typ string,
+//    INDEX clx_Id CLUSTERED(Id)
+//    DISTRIBUTED BY HASH (Id) 
+//);
+//
+//INSERT dbo.CuteStuff
+//VALUES
+//(1,"Lova","Bebis"),
+//(2,"Gustav","Bebis"),
+//(3,"Loke","Hund"),
+//(4,"Maja","Katt"),
+//(5,"Proxy","Hund"),
+//(6,"Bosse","Katt"),
+//(7,"Svante","Katt"),
+//(8,"Sansa","Katt"),
+//(9,"Linnea","Bebis"),
+//(10,"Sally","Hund");
+
+////Anropa en C# metod
+//@result =
+//    SELECT Name,
+//           LunchUSQL.LunchClass.LunchFunction(Name) AS LunchFunction_CB
+//    FROM dbo.CuteStuff;
+//
+//OUTPUT @result
+//TO "/LunchFunction_CB.txt"
+//USING Outputters.Tsv();

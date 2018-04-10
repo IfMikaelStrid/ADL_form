@@ -1,0 +1,66 @@
+﻿//********************************************//
+//****************Kill it*********************//
+//********************************************//
+
+//DROP DATABASE IF EXISTS db1;
+
+//********************************************//
+//***************Skapa tabell*****************//
+//********************************************//
+
+////Skapa databas om den inte finns
+//CREATE DATABASE IF NOT EXISTS KompetensLunch;
+//
+////Skapa en ny tabell om den inte redan finns
+//CREATE TABLE IF NOT EXISTS KompetensLunch.dbo.komplunchTabell
+//(
+//        //Define schema of table
+//        UserId          int, 
+//        Start           DateTime, 
+//        Region          string, 
+//        Query           string, 
+//        Duration        int, 
+//        Urls            string, 
+//        ClickedUrls     string,
+//    INDEX idx1 
+//    CLUSTERED (Region ASC) 
+//    DISTRIBUTED BY HASH (Region) 
+//);
+
+//********************************************//
+//***************Skriv data*******************//
+//********************************************//
+
+//Las in data
+@searchlog = 
+    EXTRACT UserId          int, 
+            Start           DateTime, 
+            Region          string, 
+            Query           string, 
+            Duration        int, 
+            Urls            string, 
+            ClickedUrls     string
+    FROM @"/Samples/Data/SearchLog.tsv"
+    USING Extractors.Tsv();
+
+INSERT INTO KompetensLunch
+SELECT *
+FROM @searchlog;
+
+
+//********************************************//
+//****************Las Data********************//
+//********************************************//
+//@ExempelValues =
+//    SELECT *
+//    FROM dbo.komplunchTabell;
+//
+////Skriv till fil
+//OUTPUT @ExempelValues
+//TO @"/Komplunch_output.tsv"
+//USING Outputters.Tsv();
+//
+////Hela tabellen
+//OUTPUT dbo.komplunchTabell
+//TO @"/Komplunch_output_direct.tsv"
+//USING Outputters.Tsv();

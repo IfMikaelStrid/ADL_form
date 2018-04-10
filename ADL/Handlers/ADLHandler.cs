@@ -7,6 +7,7 @@ using Microsoft.Azure.DataLake.Store;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest.Azure.Authentication;
 using System.IO;
+using System.Web.Services.Description;
 using ADL.Models;
 
 namespace ADL.Handlers
@@ -43,7 +44,6 @@ namespace ADL.Handlers
 
         public void CreateFile(AdlsClient client)
         {
-            //Create a file - automatically creates any parent directories that don't exist
             using (var streamWriter = new StreamWriter(client.CreateFile(fileName, IfExists.Overwrite)))
             {
                 var row = $"Name:, " +
@@ -55,6 +55,14 @@ namespace ADL.Handlers
             }
         }
 
+        public void CreateFile(AdlsClient client, string newfilename, string content)
+        {
+            using (var streamWriter = new StreamWriter(client.CreateFile(newfilename, IfExists.Overwrite)))
+            {
+                var row = $"{content}";
+                streamWriter.WriteLine(row);
+            }
+        }
         public void AppendToFile(AdlsClient client, FormValues formValues)
         {
             //Append to existing file

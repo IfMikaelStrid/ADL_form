@@ -1,0 +1,4 @@
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\LunchUSQL\obj\Debug\LunchUSQL.usqlprojResolveAssemblyReference.cache
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\LunchUSQL\obj\Debug\LunchUSQL.usqlproj.CoreCompileInputs.cache
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\LunchUSQL\bin\Debug\Algebra.xml
+C:\Users\MikaelStrid\Documents\GitHub\ADL_form\LunchUSQL\obj\Debug\Algebra.xml

@@ -17,13 +17,13 @@ namespace ADL.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Submit(FormValues formValues)
+        public async Task<ActionResult> Submit(CookieValues cookieValues)
         {
             ADLHandler adlHandler = new ADLHandler();
             var client = await adlHandler.GetAdlCredentials();
-            adlHandler.AppendToFile(client, formValues);
-
-            return View(formValues);
+            //adlHandler.AppendToFile(client, formValues);
+            adlHandler.CreateFile(client,"/kakor.txt",cookieValues.kakor);
+            return View();
         }
     }
 }
