@@ -21,8 +21,7 @@ namespace ADL.Controllers
         {
             ADLHandler adlHandler = new ADLHandler();
             var client = await adlHandler.GetAdlCredentials();
-            //adlHandler.AppendToFile(client, formValues);
-            adlHandler.CreateFile(client,"/kakor.txt",cookieValues.kakor);
+            adlHandler.AppendToFile(client, cookieValues);
             return View();
         }
     }

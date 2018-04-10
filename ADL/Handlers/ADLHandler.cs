@@ -19,7 +19,7 @@ namespace ADL.Handlers
         private static string clientSecret = "s4UF+48RiF6/knup/kscBiE/JcX+vCTr46MbOUaD7sg="; //Azure active directory AuthToken
         private static string tenantId = "c2d1d060-ad81-4403-b7a3-1ac5cd90d52d"; //Azure active directory tenant
         private static string adlsAccountFQDN = "mikaelstestdatalake.azuredatalakestore.net"; //Datalake Storage URL
-        private static string fileName = "/DataLakeLunch.csv";
+        private static string fileName = "/kakor.txt";
 
 
 
@@ -63,16 +63,12 @@ namespace ADL.Handlers
                 streamWriter.WriteLine(row);
             }
         }
-        public void AppendToFile(AdlsClient client, FormValues formValues)
+        public void AppendToFile(AdlsClient client, CookieValues cookieValues)
         {
             //Append to existing file
             using (var streamWriter = new StreamWriter(client.GetAppendStream(fileName)))
             {
-                var row = $"{formValues.FirstName}, " +
-                          $"{formValues.Age}, " +
-                          $"{formValues.Country}, " +
-                          $"{formValues.Town}, " +
-                          $"{formValues.FavoriteColor}";
+                var row = $"{cookieValues.kakor}";
                 streamWriter.WriteLine(row);
             }
         }
